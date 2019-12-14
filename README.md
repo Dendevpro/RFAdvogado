@@ -1,4 +1,8 @@
 # Renato Facciolla Advogado
-Static Responsive Website using HTML, CSS, Bootstrap and Javascript
+### www.renatofacciolla.com.br
 
-``https://dendevpro.github.io/RFAdvogado/``
+Static Responsive Website
+Project Built With
+
+[HTML](https://html.com) | [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) | [Bootstrap](https://getbootstrap.com) | [Javascript](https://www.javascript.com/)
+

@@ -73,12 +73,12 @@ a:hover {
     padding: .5rem 0;
     /* background: none; */
     width: 100%;
-    position: fixed;
-    bottom: 0px;
+    /* position: fixed;
+    bottom: 0px; */
 }
 
 #copyright {
-    color: rgb(32, 41, 90);
+    color: rgb(65, 77, 142);
     padding: .5rem 0 0 0;
 }
 

@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- bootstrap CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- FONT-FAMILIES -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900&display=swap" rel="stylesheet">
-    <!-- Font Awesome My Kit-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet"> <!-- Font Awesome My Kit-->
     <script src="https://kit.fontawesome.com/5ef6349c09.js"></script>
     <!-- Added custom css -->
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
@@ -29,45 +30,96 @@
 </head>
 
 <body>
-
-    <div class="wrapper">
-        <nav>
-
+    <div class="wrapper img-responsive">
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/RF-Logo.svg" alt="RFA-logo" id="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Áreas de Atuação
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Sobre</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
-        <div class="hero img-responsive">
+        <div class="hero">
             <div class="container text-center">
-                <div class="jumbotron" style="background: none;">
-                    <img src="assets/images/RF-Logo.svg" alt="RFA-logo" id="logo">
-                </div>
-                <h1>Website em desenvolvimento. <br>
-                    Por favor, retorne em breve.</h1>
-                <!-- <a class="socialIcon" href="mailto:contact@maurofacciolla.com">
-                    <i class="fas fa-envelope fa-lg fa-2x"></i>
-                </a> -->
-                <!-- Copyright -->
-            </div>
-        </div>
-        <div class="footer text-center">
-            <div class="container">
-                <div id="copyright">
-                    <p>© Copyright 2019 - Todos os direitos reservados a Renato Facciolla Advogado</p>
+                <img id="construct" src="./assets/images/construction.svg" alt="Em_Construção">
+                <h1>Website em desenvolvimento.</h1>
+                <h3>Por favor, entre em contato usando um dos links abaixo.</h3>
+                <br>
+
+                <div class="card-deck">
+                    <div class="card border-light">
+                        <div class="card-body">
+                            <i class="far fa-envelope fa-lg fa-2x"></i>
+                            <h5 class="card-title">Email</h5>
+                            <a class="socialIcon" href="mailto:contato@renatofacciolla.com.br">
+                                <p class="card-text">contato@renatofacciolla.com.br</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card border-light">
+                        <div class="card-body">
+                            <i class="fas fa-mobile-alt fa-lg fa-2x"></i>
+                            <h5 class="card-title">Telefone</h5>
+                            <a class="socialIcon" href="tel:+5571-98122-7345">
+                                <p class="card-text">Cel.: +55 (71) 98122-7345</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card border-light">
+                        <div class="card-body">
+                            <i class="fab fa-whatsapp fa-lg fa-2x"></i>
+                            <h5 class="card-title">Whatsapp</h5>
+                            <a class="btZap socialIcon" href="https://web.whatsapp.com/send?1=pt_BR&phone=5571981227345"
+                                target="_blank">
+                                <p class="card-text">Envie sua mensagem aqui!</p>
+                            </a>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="footer text-center">
+        <div class="container">
+            <!-- Copyright -->
+            <div id="copyright">
+                <p>© Copyright 2019 - Todos os direitos reservados a Renato Facciolla</p>
+            </div>
+        </div>
     </div>
-
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"

@@ -15,10 +15,10 @@ body {
 .img-responsive {
     background: url("../images/heroBG.jpg");
     background-size: cover;
-    /* background-attachment: fixed; */
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .navbar {
@@ -54,6 +54,10 @@ a:hover {
     padding: 2rem;
 }
 
+.card-deck {
+    margin: 1rem 0 4rem 0;
+}
+
 .card {
     background-color: rgb(255,255,255,0);
 }
@@ -73,8 +77,8 @@ a:hover {
     padding: .5rem 0;
     /* background: none; */
     width: 100%;
-    /* position: fixed;
-    bottom: 0px; */
+    position: absolute;
+    bottom: 0px;
 }
 
 #copyright {
@@ -85,12 +89,30 @@ a:hover {
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .navbar {
-        background: rgb(7, 0, 48)!important;
+        background: rgb(7, 0, 48, 0.9)!important;
+    }
 
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;;
     }
 
     #logo {
-        width: 60vw;
+        width: 50vw;
+    }
+
+    #construct {
+        width: 94vw;
+        margin: 3rem 0 0 0;
+    }
+
+    .footer {
+        position: relative;
+        bottom: 0px;
     }
 }
 
@@ -110,7 +132,11 @@ a:hover {
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    
+    #construct {
+        width: 60vw;
+        margin: 3rem 0 0 0;
+    }
+
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */

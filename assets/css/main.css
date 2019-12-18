@@ -77,7 +77,7 @@ a:hover {
     padding: .5rem 0;
     /* background: none; */
     width: 100%;
-    position: absolute;
+    position: relative;
     bottom: 0px;
 }
 
@@ -121,12 +121,27 @@ a:hover {
     #logo {
         width: 60vw;
     }
+
+    .footer {
+        position: relative;
+        bottom: 0px;
+    }
 }
 
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     #logo {
         width: 20vw;
+    }
+
+    #construct {
+        width: 60vw;
+        margin: 3rem 0 0 0;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0px;
     }
 }
 
@@ -135,6 +150,11 @@ a:hover {
     #construct {
         width: 60vw;
         margin: 3rem 0 0 0;
+    }
+
+    .footer {
+        position: relative;
+        bottom: 0px;
     }
 
 }

@@ -6,17 +6,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <!-- bootstrap CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <!-- FONT-FAMILIES -->
     <link
         href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
-        rel="stylesheet"> <!-- Font Awesome My Kit-->
+        rel="stylesheet">
+
+    <!-- Font Awesome My Kit-->
     <script src="https://kit.fontawesome.com/5ef6349c09.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
     <!-- Added custom css -->
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-    <title>Renato Facciolla Advogado</title>
+    <title>Renato Facciolla Advogado & Associados</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151934494-1">
     </script> -->
@@ -31,7 +43,7 @@
 
 <body class=" img-responsive">
     <div class="wrapper">
-        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
             <a class="navbar-brand" href="index.html">
                 <img src="assets/images/RF-Logo.svg" alt="RFA-logo" id="logo">
             </a>
@@ -100,6 +112,20 @@
                     </div>
                 </div>
             </div>
+            <!-- <div class="card-deck">
+                <div class="card border-light">
+                    <div class="card-body">
+                        <i class="fab fa-whatsapp fa-lg fa-2x"></i>
+                        <h5 class="card-title">Fazer Upload</h5>
+                        <a class="#" href="https://web.whatsapp.com/send?1=pt_BR&phone=5571981227345" target="_blank">
+                            <div id="filesubmit">
+                                <input type="file" class="file-select" accept="image/*" />
+                                <button class="btn-success file-submit">SUBMIT</button>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
     <div class="footer text-center">
@@ -110,6 +136,50 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCmbkVOlyIxo2FAjffhW9OXrSM77LFiJZc",
+            authDomain: "refaccidb.firebaseapp.com",
+            databaseURL: "https://refaccidb.firebaseio.com",
+            projectId: "refaccidb",
+            storageBucket: "refaccidb.appspot.com",
+            messagingSenderId: "612508032696",
+            appId: "1:612508032696:web:d9659c3c46c9a63ecade4d",
+            measurementId: "G-GHQSFLG1EW"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const storageService = firebase.storage();
+        const storageRef = storageService.ref();
+        firebase.analytics();
+
+
+
+        document.querySelector('.file-select').addEventListener('change', handleFileUploadChange);
+        document.querySelector('.file-submit').addEventListener('click', handleFileUploadSubmit);
+
+        let selectedFile;
+        function handleFileUploadChange(e) {
+            selectedFile = e.target.files[0];
+        }
+
+        function handleFileUploadSubmit(e) {
+            const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+            uploadTask.on('state_changed', (snapshot) => {
+                // Observe state change events such as progress, pause, and resume
+            }, (error) => {
+                // Handle unsuccessful uploads
+                console.log(error);
+            }, () => {
+                // Do something once upload is complete
+                console.log('success');
+            });
+        }
+    </script>
+
+
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -125,14 +195,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"
         integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8=" crossorigin="anonymous"></script>
 
-    <script src="./assets/js/index.js"></script>
+    <!-- <script src="./assets/js/index.js"></script> -->
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
-
-    <script src="./assets/js/contact-form.js"></script> -->
 
 </body>
 

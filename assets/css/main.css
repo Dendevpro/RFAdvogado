@@ -118,6 +118,14 @@ a:hover {
         margin: 3rem 0 0 0;
     }
 
+    #DeskZapLink {
+        display: none;
+    }
+
+    #MobZapLink {
+        display: inline-block;
+    }
+
     .footer {
         position: relative;
         bottom: 0px;

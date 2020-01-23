@@ -124,6 +124,8 @@ a:hover {
 
     #MobZapLink {
         display: inline-block;
+        width: 100%;
+
     }
 
     .footer {
@@ -144,6 +146,7 @@ a:hover {
 
     #MobZapLink {
         display: inline-block;
+        width: 100%;
     }
 
     .footer {

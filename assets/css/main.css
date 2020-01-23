@@ -72,6 +72,14 @@ a:hover {
     margin-bottom: .5rem;
 }
 
+#DeskZapLink {
+    display: inline-block;
+}
+
+#MobZapLink {
+    display: none;
+}
+
 .footer {
     background-color: rgb(0, 2, 33);
     padding: .5rem 0;

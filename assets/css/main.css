@@ -122,6 +122,14 @@ a:hover {
         width: 60vw;
     }
 
+    #DeskZapLink {
+        display: none;
+    }
+
+    #MobZapLink {
+        display: inline-block;
+    }
+
     .footer {
         position: relative;
         bottom: 0px;

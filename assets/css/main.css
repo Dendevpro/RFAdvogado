@@ -60,6 +60,7 @@ a:hover {
 
 .card {
     background-color: rgb(255,255,255,0);
+    min-width: 220px;
 }
 
 .card:hover {
@@ -85,7 +86,7 @@ a:hover {
     padding: .5rem 0;
     /* background: none; */
     width: 100%;
-    position: relative;
+    position: fixed;
     bottom: 0px;
 }
 
@@ -167,7 +168,7 @@ a:hover {
     }
 
     .footer {
-        position: absolute;
+        position: relative;
         bottom: 0px;
     }
 }

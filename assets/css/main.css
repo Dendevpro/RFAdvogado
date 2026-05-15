@@ -38,7 +38,7 @@
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
 body {
   font-family: 'Montserrat', sans-serif;
   background: var(--cream);
@@ -1191,13 +1191,27 @@ select.form-control option { background: var(--white); color: var(--text); }
   background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
 }
 .why-cols {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 769px) {
+  .why-cols { flex-direction: row; }
+  .why-col  { flex: 1; }
 }
 .why-col {
-  padding: 5rem 3.5rem;
-  border-right: 1px solid rgba(255,255,255,0.07);
+  width: 100%;
+  padding: 3.5rem 2.5rem;
+  border-right: none;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
   transition: background 0.4s var(--ease);
   position: relative; overflow: hidden;
+}
+@media (min-width: 769px) {
+  .why-col {
+    padding: 5rem 3.5rem;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    border-bottom: none;
+  }
 }
 .why-col::after {
   content: '';
@@ -1400,4 +1414,22 @@ select.form-control option { background: var(--white); color: var(--text); }
   .practice-card:nth-child(4) { border-right: 1px solid var(--border); }
   .practice-card:nth-child(4),
   .practice-card:nth-child(5) { border-top: none; }
+}
+
+/* ══════════════════════════════════════
+   NEW SECTIONS — MOBILE OVERRIDES
+   (must come after base styles)
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .why-col:last-child { border-bottom: none; }
+  .practice-preview-grid { grid-template-columns: repeat(2, 1fr); }
+  .blog-preview-grid { grid-template-columns: 1fr; }
+  .statement-section { padding: 80px 0; }
+}
+
+@media (max-width: 480px) {
+  .practice-preview-grid { grid-template-columns: 1fr; }
+  .practice-card { border-right: none; border-top: none; border-bottom: 1px solid var(--border); }
+  .practice-card:first-child { border-top: 1px solid var(--border); }
+  .practice-card:last-child  { border-bottom: none; }
 }

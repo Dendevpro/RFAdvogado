@@ -1445,3 +1445,23 @@ select.form-control option { background: var(--white); color: var(--text); }
   .practice-card:first-child { border-top: 1px solid var(--border); }
   .practice-card:last-child  { border-bottom: none; }
 }
+
+/* Mobile hero: portrait band on top, copy below. On narrow screens a
+   centered "cover" crop shows only the empty left side of the photo. */
+@media (max-width: 768px) {
+  .hero {
+    display: block;
+    min-height: 0;
+    padding: 44svh 0 3.5rem;
+    background-color: #06070b;
+    background-size: auto 52svh;
+    background-position: 86% var(--nav-h);
+  }
+  .hero::before {
+    display: block; content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(6,7,11,0) 34svh, rgba(6,7,11,0.9) 46svh, #06070b 56svh);
+  }
+  .hero .container { padding-top: 0; }
+  .hero-scroll { display: none; }
+}

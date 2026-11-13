@@ -34,15 +34,12 @@
   }
 
   /* ── Active nav link ── */
-  const path = window.location.pathname;
-  const page = path.split('/').pop() || 'index.html';
+  const norm = (p) => p.replace(/index\.html$/, '');
+  const here = norm(window.location.pathname);
   document.querySelectorAll('.nav-links a').forEach(a => {
-    const href = a.getAttribute('href');
-    if (!href) return;
-    const isArtigos = path.includes('/artigos') && href.includes('artigos');
-    const isHome    = (page === '' || page === 'index.html') && href === 'index.html';
-    const isMatch   = href === page;
-    if (isArtigos || isHome || isMatch) a.classList.add('active');
+    const target = norm(new URL(a.href, window.location.href).pathname);
+    const isArtigos = here.includes('/artigos/') && target.endsWith('/artigos/');
+    if (isArtigos || target === here) a.classList.add('active');
   });
 
   /* ── IntersectionObserver: unified animation handler ── */
@@ -110,7 +107,7 @@
   const WZ_PHONE = '5571981227345';
   const wzHref   = isMobile
     ? `https://wa.me/${WZ_PHONE}`
-    : `https://web.whatsapp.com/send?1=pt_BR&phone=${WZ_PHONE}`;
+    : `https://web.whatsapp.com/send?l=pt_BR&phone=${WZ_PHONE}`;
 
   document.querySelectorAll('.wz-link, .wz-float').forEach(el => {
     el.setAttribute('href', wzHref);
@@ -122,17 +119,60 @@
   const yearEl = document.getElementById('copy-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ── Contact form: feedback ── */
+  /* ── Contact form ──
+     With a Web3Forms access key in data-web3forms-key the message is posted
+     there; without one it opens the visitor's email app, pre-filled. */
   const form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', function () {
-      const btn = form.querySelector('[type="submit"]');
-      btn.textContent = 'Enviando…';
+    const btn    = form.querySelector('[type="submit"]');
+    const status = form.querySelector('.form-status');
+    const label  = btn.innerHTML;
+    const say    = (msg, ok) => {
+      if (!status) return;
+      status.textContent = msg;
+      status.classList.toggle('is-error', !ok);
+    };
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const data = new FormData(form);
+      const key  = form.dataset.web3formsKey;
+
+      if (!key) {
+        const lines = [
+          'Nome: ' + data.get('nome'),
+          'Telefone: ' + (data.get('telefone') || '-'),
+          'Email: ' + data.get('email'),
+          'Área: ' + (data.get('area') || '-'),
+          '',
+          data.get('mensagem')
+        ];
+        window.location.href = 'mailto:contato@renatofacciolla.com.br'
+          + '?subject=' + encodeURIComponent('Contato pelo site — ' + data.get('nome'))
+          + '&body=' + encodeURIComponent(lines.join('\n'));
+        say('Abrimos seu aplicativo de email com a mensagem pronta. Se nada abriu, escreva para contato@renatofacciolla.com.br.', true);
+        return;
+      }
+
+      data.append('access_key', key);
+      data.append('subject', 'Contato pelo site — ' + data.get('nome'));
+      data.append('from_name', 'renatofacciolla.com.br');
       btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = 'Enviar Mensagem';
+      btn.textContent = 'Enviando…';
+      try {
+        const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+        const json = await res.json();
+        if (!json.success) throw new Error(json.message);
+        form.reset();
+        say('Mensagem enviada. Retornaremos em breve.', true);
+      } catch (err) {
+        say('Não foi possível enviar agora. Tente pelo WhatsApp ou escreva para contato@renatofacciolla.com.br.', false);
+      } finally {
         btn.disabled = false;
-      }, 2000);
+        btn.innerHTML = label;
+      }
     });
   }
 

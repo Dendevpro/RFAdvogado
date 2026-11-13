@@ -19,17 +19,21 @@
   const toggle = document.querySelector('.nav-toggle');
   const links  = document.querySelector('.nav-links');
   if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      const isOpen = toggle.classList.toggle('open');
-      links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(isOpen));
+    const setOpen = (open) => {
+      toggle.classList.toggle('open', open);
+      links.classList.toggle('open', open);
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    };
+    toggle.addEventListener('click', () => setOpen(!links.classList.contains('open')));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    // Close on a tap outside the drawer, or with Escape
+    document.addEventListener('click', (e) => {
+      if (links.classList.contains('open') && !links.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
     });
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        toggle.classList.remove('open');
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && links.classList.contains('open')) { setOpen(false); toggle.focus(); }
     });
   }
 

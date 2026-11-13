@@ -1446,22 +1446,29 @@ select.form-control option { background: var(--white); color: var(--text); }
   .practice-card:last-child  { border-bottom: none; }
 }
 
-/* Mobile hero: portrait band on top, copy below. On narrow screens a
-   centered "cover" crop shows only the empty left side of the photo. */
+/* Mobile hero: full-height portrait with his face just under the nav and
+   the copy over his body, buttons over his lap. A centered "cover" crop
+   would show only the empty left side of the photo. */
 @media (max-width: 768px) {
   .hero {
-    display: block;
-    min-height: 0;
-    padding: 44svh 0 3.5rem;
+    align-items: flex-end;
+    min-height: max(100svh, 800px);
+    padding-bottom: 5.5rem;
     background-color: #06070b;
-    background-size: auto 52svh;
-    background-position: 86% var(--nav-h);
+    background-size: auto 112%;
+    background-position: 79% 100%;
   }
   .hero::before {
     display: block; content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(6,7,11,0) 34svh, rgba(6,7,11,0.9) 46svh, #06070b 56svh);
+    background: linear-gradient(to bottom, rgba(6,7,11,0) 40%, rgba(6,7,11,0.6) 54%, rgba(6,7,11,0.78) 100%);
   }
   .hero .container { padding-top: 0; }
+  .hero h1, .hero-text, .hero-eyebrow { text-shadow: 0 1px 12px rgba(0,0,0,0.6); }
+  .hero-eyebrow { font-size: 0.6rem; letter-spacing: 0.16em; margin-bottom: 0.8rem; }
+  .hero-eyebrow::before { display: none; }
+  .hero h1 { font-size: clamp(2.1rem, 9.5vw, 2.6rem); margin-bottom: 0.9rem; }
+  .hero-text { font-size: 0.88rem; line-height: 1.65; margin-bottom: 1.4rem; }
+  .hero-actions { gap: 0.7rem; }
   .hero-scroll { display: none; }
 }

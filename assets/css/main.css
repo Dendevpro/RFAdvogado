@@ -356,7 +356,11 @@ body.nav-open::before {
   white-space: nowrap;
 }
 .page-hero h1 br  { display: none; }
-.page-hero h1 em  { font-style: italic; color: var(--accent); margin-left: 0.22em; }
+.page-hero h1 em  { font-style: italic; color: var(--accent); }
+/* The <br> is hidden, so give the title a real space (a line-break
+   opportunity) before the italic word instead of a margin */
+.page-hero h1 em::before { content: ' '; }
+.page-hero h1 { text-wrap: balance; }
 
 .breadcrumb-nav {
   display: flex; align-items: center; gap: 0.5rem;
@@ -364,7 +368,10 @@ body.nav-open::before {
   font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
   color: rgba(255,255,255,0.42);
 }
-.page-hero .breadcrumb-nav { justify-content: center; }
+.page-hero .breadcrumb-nav { justify-content: center; flex-wrap: wrap; row-gap: 0.2rem; }
+/* The container is a flex item: without these it grows to fit the longest
+   unbreakable line and pushes the title past the screen edge on phones */
+.page-hero .container { width: 100%; min-width: 0; }
 .breadcrumb-nav a { color: var(--accent); transition: opacity 0.3s; }
 .breadcrumb-nav a:hover { opacity: 0.7; }
 .breadcrumb-nav .sep { opacity: 0.35; }

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.renatofacciolla.com.br/sitemap.xml
+Sitemap: https://renatofacciolla.com.br/sitemap.xml

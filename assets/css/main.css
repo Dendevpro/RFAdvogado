@@ -1079,6 +1079,8 @@ select.form-control option { background: var(--white); color: var(--text); }
   background: var(--accent); border-radius: 50%;
 }
 .article-body strong { color: var(--text); font-weight: 600; }
+.article-body p a, .article-body li a, .article-meta a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.article-body p a:hover, .article-body li a:hover, .article-meta a:hover { color: var(--accent-hover); }
 .article-divider { height: 1px; background: var(--border); margin: 2.5rem 0; }
 .article-callout {
   background: var(--accent-light);
@@ -1444,6 +1446,34 @@ select.form-control option { background: var(--white); color: var(--text); }
   .practice-card { border-right: none; border-top: none; border-bottom: 1px solid var(--border); }
   .practice-card:first-child { border-top: 1px solid var(--border); }
   .practice-card:last-child  { border-bottom: none; }
+}
+
+/* Eyebrow lives inside the h1 (keyword in the heading) */
+.hero h1 .hero-eyebrow { font-family: 'Montserrat', sans-serif; line-height: 1.6; }
+
+/* Portrait on the Sobre sidebar */
+.sidebar-photo {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 4 / 5; object-fit: cover;
+  margin-bottom: 1.6rem;
+}
+
+/* Author box at the end of articles */
+.author-box {
+  display: flex; gap: 1.4rem; align-items: flex-start;
+  margin-top: 3rem; padding: 1.8rem;
+  background: var(--white); border: 1px solid var(--border);
+}
+.author-box img { flex: none; width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
+.author-box-label {
+  display: block; font-size: 0.66rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.author-box h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+.author-box p { font-size: 0.9rem; margin-bottom: 0.8rem; }
+@media (max-width: 480px) {
+  .author-box { flex-direction: column; gap: 1rem; }
 }
 
 /* Mobile hero: full-height portrait with his face just under the nav and
